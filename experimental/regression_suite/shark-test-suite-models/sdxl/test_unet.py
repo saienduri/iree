@@ -90,7 +90,6 @@ ROCM_COMPILE_FLAGS = [
     "--iree-hal-target-backends=rocm",
     f"--iree-rocm-target-chip={rocm_chip}",
     "--iree-opt-const-eval=false",
-    f"--iree-codegen-transform-dialect-library={iree_test_path_extension}/attention_and_matmul_spec.mlir",
     "--iree-global-opt-propagate-transposes=true",
     "--iree-flow-enable-fuse-horizontal-contractions=true",
     "--iree-flow-enable-aggressive-fusion=true",
