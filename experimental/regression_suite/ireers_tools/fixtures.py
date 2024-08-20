@@ -10,6 +10,7 @@ from typing import Dict, Sequence, Union
 from pathlib import Path
 import subprocess
 import time
+import os
 
 from .artifacts import (
     Artifact,
@@ -43,6 +44,8 @@ def iree_compile(source: Artifact, compiled_variant: str, flags: Sequence[str]):
         print("**************************************************************")
         print(f"Compiling {source} -> {vmfb_artifact} with flags:")
         print(f"  {sep.join(flags)}")
+        if os.path.exists(vmfb_artifact.path):
+            os.remove(vmfb_artifact.path)  # Remove any existing vmfb
         exec_args = (
             [
                 "iree-compile",
